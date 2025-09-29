@@ -16,6 +16,12 @@ export default function Login() {
     const { error } = await supabase.auth.signInWithPassword({ email, password: pw });
     setMsg(error ? error.message : 'Signed in. Next: /onboarding');
   };
+  
+ <button onClick={async () => {
+  const supabase = getSupabaseBrowser();
+  await supabase.auth.signOut();
+  alert('Signed out');
+}}>Sign Out</button>
 
   return (
     <div style={{maxWidth:420}}>
